@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.authors       = { "Matthew Morey" => "me@matthewmorey.com", "Rogelio Gudino" => "cananito@gmail.com", "Osama Ashawa" => "osama@oashawa.com" }
   s.social_media_url = 'https://twitter.com/xzolian'
-  s.screenshot = "https://github.com/chaione/CHCircleGauge/raw/master/miscellaneous/screenshots/CHCircleGaugeView_ExampleAnimation01.gif"
+  s.screenshot = "https://github.com/chaione/CHCircleGauge/raw/master/miscellaneous/screenshots/CHCircleGaugeView_ExampleAnimation02.gif"
   s.platform     = :ios
   s.source       = { :git => "https://github.com/chaione/CHCircleGaugeView.git", :tag => 'v1.1.0' }
   s.source_files = "CHCircleGaugeView/*.{h,m}"
