@@ -54,9 +54,10 @@
     
     self.customView.trackWidthSlider.maximumValue = 100.0;
     self.customView.gaugeWidthSlider.maximumValue = 100.0;
+    self.customView.valueSlider.value = self.customView.gauge.value;
     self.customView.trackWidthSlider.value = self.customView.gauge.trackWidth;
     self.customView.gaugeWidthSlider.value = self.customView.gauge.gaugeWidth;
-    self.customView.valueSliderLabel.text = [self formattedStringForFloatValue:self.customView.gauge.value];
+    self.customView.valueSliderLabel.text = [self formattedStringForFloatValue:(self.customView.gauge.value * 100)];
     self.customView.trackWidthSliderLabel.text = [self formattedStringForFloatValue:self.customView.gauge.trackWidth];
     self.customView.gaugeWidthSliderLabel.text = [self formattedStringForFloatValue:self.customView.gauge.gaugeWidth];
     self.customView.valueSlider.continuous = NO;
@@ -76,6 +77,7 @@
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(changeState:)];
     [self.customView.gauge addGestureRecognizer:tapGestureRecognizer];
     
+    [self.customView.gaugeStyleSwitch addTarget:self action:@selector(changeGuageStyle:) forControlEvents:UIControlEventValueChanged];
     [self.customView.valueSlider addTarget:self action:@selector(valueSliderChangedValue:) forControlEvents:UIControlEventValueChanged];
     [self.customView.trackWidthSlider addTarget:self action:@selector(trackWidthSliderChangedValue:) forControlEvents:UIControlEventValueChanged];
     [self.customView.gaugeWidthSlider addTarget:self action:@selector(gaugeWidthSliderChangedValue:) forControlEvents:UIControlEventValueChanged];
@@ -96,6 +98,15 @@
         self.customView.gauge.state = CHCircleGaugeViewStateNA;
     } else {
         [self.customView.gauge setValue:self.customView.gauge.value animated:YES];
+    }
+}
+
+- (void)changeGuageStyle:(UISwitch *)sender {
+    
+    if (sender.on == YES) {
+        self.customView.gauge.gaugeStyle = CHCircleGaugeStyleOutside;
+    } else {
+        self.customView.gauge.gaugeStyle = CHCircleGaugeStyleInside;
     }
 }
 

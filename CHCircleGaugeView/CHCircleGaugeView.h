@@ -9,21 +9,40 @@
 
 /**
  Enumeration with the possible state of the circle gauge view.
- 
- @constant CHCircleGaugeViewStateNA "n/a" is displayed.
- @constant CHCircleGaugeViewStatePercentSign "%" is displayed.
- @constant CHCircleGaugeViewStateScore A whole number is displayed.
  */
 typedef NS_ENUM(NSInteger, CHCircleGaugeViewState) {
+    /**
+     "n/a" is displayed.
+     */
     CHCircleGaugeViewStateNA,
+    /**
+     "%" is displayed.
+     */
     CHCircleGaugeViewStatePercentSign,
+    /**
+     A whole number is displayed.
+     */
     CHCircleGaugeViewStateScore
+};
+
+/**
+ Enumeration with the possible gauge styles.
+ */
+typedef NS_ENUM(NSInteger, CHCircleGaugeStyle) {
+    /**
+     Draws the gauge inside and in the center of the track.
+     */
+    CHCircleGaugeStyleInside,
+    /**
+     Draws the gauge outside along the perimeter of the track.
+     */
+    CHCircleGaugeStyleOutside
 };
 
 /**
  A circle gauge is used to depict the value of a measurement.
  If gauge state is CHCircleGaugeViewStateNA, "n/a" is shown instead of a value.
- If gague state is CHCircleGaugeViewStateScore, "%" is shown instead of a value.
+ If gauge state is CHCircleGaugeViewStateScore, "%" is shown instead of a value.
  */
 @interface CHCircleGaugeView : UIView
 
@@ -56,7 +75,7 @@ typedef NS_ENUM(NSInteger, CHCircleGaugeViewState) {
 /** @name Configuring the gauge */
 
 /**
- The color shown for the portion of the gauge that is allways filled.
+ The color shown for the portion of the gauge that is always filled.
  */
 @property (nonatomic, strong) UIColor *trackTintColor;
 
@@ -109,5 +128,10 @@ typedef NS_ENUM(NSInteger, CHCircleGaugeViewState) {
  The text shown when the state of the gauge is `CHCircleGaugeViewStatePercentSign`. Defaults to "%".
  */
 @property (nonatomic, copy) NSString *noDataString;
+
+/**
+ Determines how the gauge is drawn relative to the track. Defaults to `CHCircleGaugeStyleInside`.
+ */
+@property (nonatomic, assign) CHCircleGaugeStyle gaugeStyle;
 
 @end

@@ -5,7 +5,7 @@ A configurable chart that depicts the value of a measurement using a subtle anim
 [![Version](https://cocoapod-badges.herokuapp.com/v/CHCircleGaugeView/badge.png)](http://cocoadocs.org/docsets/CHCircleGaugeView)
 [![Platform](https://cocoapod-badges.herokuapp.com/p/CHCircleGaugeView/badge.png)](http://cocoadocs.org/docsets/CHCircleGaugeView)
 
-<img src="https://github.com/chaione/CHCircleGauge/raw/master/miscellaneous/screenshots/CHCircleGaugeView_ExampleAnimation01.gif">
+<img src="https://github.com/chaione/CHCircleGauge/raw/master/miscellaneous/screenshots/CHCircleGaugeView_ExampleAnimation02.gif">
 
 ## Installation
 
@@ -64,6 +64,7 @@ The gauge can easily be configured by adjusting public properties:
 * `unitsString`: String that is a suffix on the `value`. This string is meant to be just a few characters long. Defaults to `nil`.
 * `notApplicableString`: The text shown when the state of the gauge is `CHCircleGaugeViewStateNA`. Defaults to "n/a".
 * `noDataString`: The text shown when the state of the gauge is `CHCircleGaugeViewStatePercentSign`. Defaults to "%".
+* `gaugeStyle`: Determines how the gauge is drawn relative to the track. Defaults to `CHCircleGaugeStyleInside`.
 
 ## Contributing
 

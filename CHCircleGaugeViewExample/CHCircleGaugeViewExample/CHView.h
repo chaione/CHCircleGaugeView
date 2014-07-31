@@ -13,6 +13,7 @@
 @interface CHView : UIView
 
 @property (nonatomic, strong, readonly) CHCircleGaugeView *gauge;
+@property (nonatomic, strong, readonly) UISwitch *gaugeStyleSwitch;
 @property (nonatomic, strong, readonly) UILabel *valueSliderLabel;
 @property (nonatomic, strong, readonly) UILabel *trackWidthSliderLabel;
 @property (nonatomic, strong, readonly) UILabel *gaugeWidthSliderLabel;
