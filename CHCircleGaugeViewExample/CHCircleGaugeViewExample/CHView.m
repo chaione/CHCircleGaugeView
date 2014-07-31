@@ -389,6 +389,7 @@
         _gauge.gaugeTintColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
         _gauge.textColor = [UIColor blackColor];
         _gauge.font = [UIFont systemFontOfSize:38];
+        _gauge.gaugeStyle = CHCircleGaugeStyleOutside;
     }
     
     return _gauge;
@@ -400,7 +401,6 @@
         _valueLabel = [[UILabel alloc] init];
         _valueLabel.translatesAutoresizingMaskIntoConstraints = NO;
         _valueLabel.font = [UIFont systemFontOfSize:15.0];
-//        _valueLabel.textAlignment = NSTextAlignmentCenter;
     }
     
     return _valueLabel;
@@ -412,7 +412,6 @@
         _trackWidthLabel = [[UILabel alloc] init];
         _trackWidthLabel.translatesAutoresizingMaskIntoConstraints = NO;
         _trackWidthLabel.font = [UIFont systemFontOfSize:15.0];
-//        _trackWidthLabel.textAlignment = NSTextAlignmentCenter;
     }
     
     return _trackWidthLabel;
@@ -424,7 +423,6 @@
         _gaugeWidthLabel = [[UILabel alloc] init];
         _gaugeWidthLabel.translatesAutoresizingMaskIntoConstraints = NO;
         _gaugeWidthLabel.font = [UIFont systemFontOfSize:15.0];
-//        _gaugeWidthLabel.textAlignment = NSTextAlignmentCenter;
     }
     
     return _gaugeWidthLabel;
