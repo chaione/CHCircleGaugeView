@@ -13,6 +13,9 @@
 
 @property (nonatomic, strong) CHCircleGaugeView *gauge;
 
+@property (nonatomic, strong) UILabel *gaugeStyleLabel;
+@property (nonatomic, strong) UISwitch *gaugeStyleSwitch;
+
 @property (nonatomic, strong) UILabel *valueLabel;
 @property (nonatomic, strong) UILabel *trackWidthLabel;
 @property (nonatomic, strong) UILabel *gaugeWidthLabel;
@@ -58,6 +61,8 @@
 - (void)setupUI {
     
     [self addSubview:self.gauge];
+    [self addSubview:self.gaugeStyleLabel];
+    [self addSubview:self.gaugeStyleSwitch];
     [self addSubview:self.valueLabel];
     [self addSubview:self.valueSlider];
     [self addSubview:self.trackWidthLabel];
@@ -71,6 +76,7 @@
     [self addSubview:self.trackColorIndicatorView];
     [self addSubview:self.gaugeColorIndicatorView];
     
+    self.gaugeStyleLabel.text = @"Gauge Outside:";
     self.valueLabel.text = @"Value:";
     self.trackWidthLabel.text = @"Track Width:";
     self.gaugeWidthLabel.text = @"Gauge Width:";
@@ -79,6 +85,7 @@
 - (void)setupConstraints {
     
     [self setupGaugeConstraints];
+    [self setupGaugeStyleConstraints];
     [self setupColorIndicatorsConstraints];
     [self setupSliderLabelsConstraints];
     [self setupValueSliderConstraints];
@@ -117,6 +124,39 @@
                                                      attribute:NSLayoutAttributeTop
                                                     multiplier:1
                                                       constant:68.0]];
+}
+
+- (void)setupGaugeStyleConstraints {
+    
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.gaugeStyleSwitch
+                                                     attribute:NSLayoutAttributeRight
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeRight
+                                                    multiplier:1
+                                                      constant:-10]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.gaugeStyleSwitch
+                                                     attribute:NSLayoutAttributeTop
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeTop
+                                                    multiplier:1
+                                                      constant:10]];
+    
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.gaugeStyleLabel
+                                                     attribute:NSLayoutAttributeRight
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self.gaugeStyleSwitch
+                                                     attribute:NSLayoutAttributeLeft
+                                                    multiplier:1
+                                                      constant:-10]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.gaugeStyleLabel
+                                                     attribute:NSLayoutAttributeCenterY
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self.gaugeStyleSwitch
+                                                     attribute:NSLayoutAttributeCenterY
+                                                    multiplier:1
+                                                      constant:0]];
 }
 
 - (void)setupColorIndicatorsConstraints {
@@ -389,10 +429,30 @@
         _gauge.gaugeTintColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
         _gauge.textColor = [UIColor blackColor];
         _gauge.font = [UIFont systemFontOfSize:38];
-        _gauge.gaugeStyle = CHCircleGaugeStyleOutside;
     }
     
     return _gauge;
+}
+
+- (UILabel *)gaugeStyleLabel {
+    
+    if (_gaugeStyleLabel == nil) {
+        _gaugeStyleLabel = [[UILabel alloc] init];
+        _gaugeStyleLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        _gaugeStyleLabel.font = [UIFont systemFontOfSize:15.0];
+    }
+    
+    return _gaugeStyleLabel;
+}
+
+- (UISwitch *)gaugeStyleSwitch {
+    
+    if (_gaugeStyleSwitch == nil) {
+        _gaugeStyleSwitch = [[UISwitch alloc] init];
+        _gaugeStyleSwitch.translatesAutoresizingMaskIntoConstraints = NO;
+    }
+    
+    return _gaugeStyleSwitch;
 }
 
 - (UILabel *)valueLabel {

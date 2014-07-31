@@ -76,6 +76,7 @@
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(changeState:)];
     [self.customView.gauge addGestureRecognizer:tapGestureRecognizer];
     
+    [self.customView.gaugeStyleSwitch addTarget:self action:@selector(changeGuageStyle:) forControlEvents:UIControlEventValueChanged];
     [self.customView.valueSlider addTarget:self action:@selector(valueSliderChangedValue:) forControlEvents:UIControlEventValueChanged];
     [self.customView.trackWidthSlider addTarget:self action:@selector(trackWidthSliderChangedValue:) forControlEvents:UIControlEventValueChanged];
     [self.customView.gaugeWidthSlider addTarget:self action:@selector(gaugeWidthSliderChangedValue:) forControlEvents:UIControlEventValueChanged];
@@ -96,6 +97,15 @@
         self.customView.gauge.state = CHCircleGaugeViewStateNA;
     } else {
         [self.customView.gauge setValue:self.customView.gauge.value animated:YES];
+    }
+}
+
+- (void)changeGuageStyle:(UISwitch *)sender {
+    
+    if (sender.on == YES) {
+        self.customView.gauge.gaugeStyle = CHCircleGaugeStyleOutside;
+    } else {
+        self.customView.gauge.gaugeStyle = CHCircleGaugeStyleInside;
     }
 }
 
