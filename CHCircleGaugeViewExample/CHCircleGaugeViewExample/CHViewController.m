@@ -54,9 +54,10 @@
     
     self.customView.trackWidthSlider.maximumValue = 100.0;
     self.customView.gaugeWidthSlider.maximumValue = 100.0;
+    self.customView.valueSlider.value = self.customView.gauge.value;
     self.customView.trackWidthSlider.value = self.customView.gauge.trackWidth;
     self.customView.gaugeWidthSlider.value = self.customView.gauge.gaugeWidth;
-    self.customView.valueSliderLabel.text = [self formattedStringForFloatValue:self.customView.gauge.value];
+    self.customView.valueSliderLabel.text = [self formattedStringForFloatValue:(self.customView.gauge.value * 100)];
     self.customView.trackWidthSliderLabel.text = [self formattedStringForFloatValue:self.customView.gauge.trackWidth];
     self.customView.gaugeWidthSliderLabel.text = [self formattedStringForFloatValue:self.customView.gauge.gaugeWidth];
     self.customView.valueSlider.continuous = NO;

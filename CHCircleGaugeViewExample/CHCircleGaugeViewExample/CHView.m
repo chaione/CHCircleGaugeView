@@ -452,9 +452,10 @@ static CGFloat const CHLabelWidth = 50.0;
         [_gauge setTranslatesAutoresizingMaskIntoConstraints:NO];
         _gauge.trackTintColor = [UIColor colorWithRed:0.761 green:0.035 blue:0.078 alpha:1.0];
         _gauge.trackWidth = 10;
-        _gauge.gaugeTintColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
+        _gauge.gaugeTintColor = [UIColor blackColor];
         _gauge.textColor = [UIColor blackColor];
         _gauge.font = [UIFont systemFontOfSize:38];
+        _gauge.value = 0.42;
     }
     
     return _gauge;
