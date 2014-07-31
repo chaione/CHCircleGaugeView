@@ -129,9 +129,7 @@ static NSString * const CHKeyDefaultNoAnswersText = @"%";
 
 - (void)setValue:(CGFloat)value {
     
-    if (self.state == CHCircleGaugeViewStateScore) {
-        [self setValue:value animated:NO];
-    }
+    [self setValue:value animated:NO];
 }
 
 - (void)setValue:(CGFloat)value animated:(BOOL)animated {
