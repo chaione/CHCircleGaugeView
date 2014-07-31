@@ -1,0 +1,4 @@
+
+platform :ios, '7.1'
+
+pod "Color-Picker-for-iOS"

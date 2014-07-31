@@ -1,0 +1,1 @@
+../../Color-Picker-for-iOS/ColorPicker/UIImage+CoreGraphics.h
