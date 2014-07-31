@@ -81,4 +81,4 @@ Created by [Matthew Morey](http://matthewmorey.com), [Rogelio Gudino](http://can
 
 ## License
 
-CHCircleGaugeView is available under the MIT license. See the [LICENSE](https://github.com/chaione/CHCircleGaugeView/LICENSE) file for more information. If you're using CHCircleGaugeView in your project, attribution would be nice.
+CHCircleGaugeView is available under the MIT license. See the [LICENSE](https://github.com/chaione/CHCircleGaugeView/blob/master/LICENSE) file for more information. If you're using CHCircleGaugeView in your project, attribution would be nice.
