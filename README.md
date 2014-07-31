@@ -30,8 +30,8 @@ Instantiate like any other view and customize it as needed:
     [super viewDidAppear:animated];
     
     CGRect frame = CGRectMake(0, 0, 200, 200);
-    CHCircleGauge *circleGauge = [[CHCircleGauge alloc] initWithFrame:frame];
-    [self.view addSubView:circleGauge];
+    CHCircleGaugeView *circleGaugeView = [[CHCircleGaugeView alloc] initWithFrame:frame];
+    [self.view addSubView:circleGaugeView];
     
     [circleGauge setValue:0.5 animated:YES];
 }
@@ -39,13 +39,13 @@ Instantiate like any other view and customize it as needed:
 
 ### States
 
-There is a `state` property of type `CHCircleGaugeState` that determines how to display a few things.
+There is a `state` property of type `CHCircleGaugeViewState` that determines how to display a few things.
 
-* `CHCircleGaugeStateNA`: "n/a" is displayed in the center of the circle and the gauge inside the track will not be present. The displayed string can be changed by setting the `notApplicableString` property on the gauge.
-* `CHCircleGaugeStatePercentSign`: "%" is displayed in the center of the circle and the gauge inside the track will not be present. The displayed string can be changed by setting the `noDataString` property on the gauge.
-* `CHCircleGaugeStateScore`: A whole number (with an optional units suffix) is displayed in the center of the circle and the gauge inside the track will represent the value.
+* `CHCircleGaugeViewStateNA`: "n/a" is displayed in the center of the circle and the gauge inside the track will not be present. The displayed string can be changed by setting the `notApplicableString` property on the gauge.
+* `CHCircleGaugeViewStatePercentSign`: "%" is displayed in the center of the circle and the gauge inside the track will not be present. The displayed string can be changed by setting the `noDataString` property on the gauge.
+* `CHCircleGaugeViewStateScore`: A whole number (with an optional units suffix) is displayed in the center of the circle and the gauge inside the track will represent the value.
 
-Modifying or setting the `value` property will automatically cause the state to switch to `CHCircleGaugeStateScore`.
+Modifying or setting the `value` property will automatically cause the state to switch to `CHCircleGaugeViewStateScore`.
 
 ### Setting Values
 
@@ -62,8 +62,8 @@ The gauge can easily be configured by adjusting public properties:
 * `trackWidth`: The width for the portion of the gauge that is always filled. Defaults to a value of 0.5.
 * `gaugeWidth`: The width for the portion of the gauge that varies based on the `value` property. Defaults to a value of 2.
 * `unitsString`: String that is a suffix on the `value`. This string is meant to be just a few characters long. Defaults to `nil`.
-* `notApplicableString`: The text shown when the state of the gauge is `ChCircleGaugeStateNA`. Defaults to "n/a".
-* `noDataString`: The text shown when the state of the gauge is `CHCircleGaugeStatePercentSign`. Defaults to "%".
+* `notApplicableString`: The text shown when the state of the gauge is `CHCircleGaugeViewStateNA`. Defaults to "n/a".
+* `noDataString`: The text shown when the state of the gauge is `CHCircleGaugeViewStatePercentSign`. Defaults to "%".
 
 ## Contributing
 
