@@ -77,7 +77,7 @@ Pull request are welcomed. To add functionality or to make changes:
 
 ## Authors
 
-Created by [Matthew Morey](http://matthewmorey.com), [Rogelio Gudino](http://cananito.com/), and other [contributors](https://github.com/chaione/CHCircleGaugeView/graphs/contributors).
+Created by [Osama Ashawa](http://oashawa.com/), [Matthew Morey](http://matthewmorey.com), [Rogelio Gudino](http://cananito.com/), and other [contributors](https://github.com/chaione/CHCircleGaugeView/graphs/contributors).
 
 ## License
 
