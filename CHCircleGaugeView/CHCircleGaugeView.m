@@ -202,6 +202,7 @@ static NSString * const CHKeyDefaultNoAnswersText = @"%";
         
         _trackWidth = trackWidth;
         self.trackCircleLayer.lineWidth = trackWidth;
+        [self.layer layoutSublayers];
     }
 }
 
@@ -211,6 +212,7 @@ static NSString * const CHKeyDefaultNoAnswersText = @"%";
         
         _gaugeWidth = gaugeWidth;
         self.gaugeCircleLayer.lineWidth = gaugeWidth;
+        [self.layer layoutSublayers];
     }
 }
 
@@ -232,6 +234,14 @@ static NSString * const CHKeyDefaultNoAnswersText = @"%";
     }
 }
 
+- (void)setGaugeStyle:(CHCircleGaugeStyle)gaugeStyle {
+    
+    if (_gaugeStyle != gaugeStyle) {
+        _gaugeStyle = gaugeStyle;
+        [self.layer layoutSublayers];
+    }
+}
+
 #pragma mark - Circle Shapes
 
 - (CAShapeLayer *)trackCircleLayer {
@@ -242,7 +252,7 @@ static NSString * const CHKeyDefaultNoAnswersText = @"%";
         _trackCircleLayer.lineWidth = self.trackWidth;
         _trackCircleLayer.fillColor = [UIColor clearColor].CGColor;
         _trackCircleLayer.strokeColor = self.trackTintColor.CGColor;
-        _trackCircleLayer.path = [self circlePath].CGPath;
+        _trackCircleLayer.path = [self insideCirclePath].CGPath;
     }
 
     return _trackCircleLayer;
@@ -258,17 +268,45 @@ static NSString * const CHKeyDefaultNoAnswersText = @"%";
         _gaugeCircleLayer.strokeColor = self.gaugeTintColor.CGColor;
         _gaugeCircleLayer.strokeStart = 0.0f;
         _gaugeCircleLayer.strokeEnd = self.value;
-        _gaugeCircleLayer.path = [self circlePath].CGPath;
+        _gaugeCircleLayer.path = [self circlPathForCurrentGaugeStyle].CGPath;
     }
     
     return _gaugeCircleLayer;
 }
 
-- (UIBezierPath *)circlePath {
+- (UIBezierPath *)circlPathForCurrentGaugeStyle {
+    
+    switch (self.gaugeStyle) {
+        case CHCircleGaugeStyleInside: {
+            return [self insideCirclePath];
+        }
+        case CHCircleGaugeStyleOutside: {
+            return [self outsideCirclePath];
+        }
+        default: {
+            return nil;
+        }
+    }
+}
+
+- (UIBezierPath *)insideCirclePath {
     
     CGPoint arcCenter = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
     UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:arcCenter
                                                         radius:CGRectGetWidth(self.bounds) / 2.0f
+                                                    startAngle:(3.0f * M_PI_2)
+                                                      endAngle:(3.0f * M_PI_2) + (2.0f * M_PI)
+                                                     clockwise:YES];
+    
+    return path;
+}
+
+- (UIBezierPath *)outsideCirclePath {
+    
+    CGPoint arcCenter = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
+    CGFloat radius = (CGRectGetWidth(self.bounds) / 2.0f) + (self.trackWidth / 2.0f) + (self.gaugeWidth / 2.0f);
+    UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:arcCenter
+                                                        radius:radius
                                                     startAngle:(3.0f * M_PI_2)
                                                       endAngle:(3.0f * M_PI_2) + (2.0f * M_PI)
                                                      clockwise:YES];
@@ -351,8 +389,8 @@ static NSString * const CHKeyDefaultNoAnswersText = @"%";
     
     if (layer == self.layer) {
         
-        self.trackCircleLayer.path = [self circlePath].CGPath;
-        self.gaugeCircleLayer.path = [self circlePath].CGPath;
+        self.trackCircleLayer.path = [self insideCirclePath].CGPath;
+        self.gaugeCircleLayer.path = [self circlPathForCurrentGaugeStyle].CGPath;
     }
 }
 
