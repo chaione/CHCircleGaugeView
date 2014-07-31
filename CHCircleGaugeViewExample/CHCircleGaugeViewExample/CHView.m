@@ -9,6 +9,9 @@
 #import "CHView.h"
 #import "CHCircleGaugeView.h"
 
+static CGFloat const CHLabelFontSize = 9.0;
+static CGFloat const CHSliderValueLabelFontSize = 10.0;
+
 @interface CHView ()
 
 @property (nonatomic, strong) CHCircleGaugeView *gauge;
@@ -129,19 +132,19 @@
 - (void)setupGaugeStyleConstraints {
     
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.gaugeStyleSwitch
-                                                     attribute:NSLayoutAttributeRight
+                                                     attribute:NSLayoutAttributeCenterX
                                                      relatedBy:NSLayoutRelationEqual
                                                         toItem:self
-                                                     attribute:NSLayoutAttributeRight
+                                                     attribute:NSLayoutAttributeCenterX
                                                     multiplier:1
-                                                      constant:-10]];
+                                                      constant:0]];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.gaugeStyleSwitch
-                                                     attribute:NSLayoutAttributeTop
+                                                     attribute:NSLayoutAttributeBottom
                                                      relatedBy:NSLayoutRelationEqual
-                                                        toItem:self
+                                                        toItem:self.valueSlider
                                                      attribute:NSLayoutAttributeTop
                                                     multiplier:1
-                                                      constant:10]];
+                                                      constant:-16]];
     
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.gaugeStyleLabel
                                                      attribute:NSLayoutAttributeRight
@@ -149,7 +152,7 @@
                                                         toItem:self.gaugeStyleSwitch
                                                      attribute:NSLayoutAttributeLeft
                                                     multiplier:1
-                                                      constant:-10]];
+                                                      constant:-5]];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.gaugeStyleLabel
                                                      attribute:NSLayoutAttributeCenterY
                                                      relatedBy:NSLayoutRelationEqual
@@ -310,15 +313,15 @@
                                                      relatedBy:NSLayoutRelationEqual
                                                         toItem:self
                                                      attribute:NSLayoutAttributeWidth
-                                                    multiplier:0.6
+                                                    multiplier:0.45
                                                       constant:0]];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.valueSlider
                                                      attribute:NSLayoutAttributeBottom
                                                      relatedBy:NSLayoutRelationEqual
-                                                        toItem:self.trackWidthLabel
+                                                        toItem:self.trackWidthSlider
                                                      attribute:NSLayoutAttributeTop
                                                     multiplier:1
-                                                      constant:-10]];
+                                                      constant:-20]];
 }
 
 - (void)setupTrackWidthSliderConstraints {
@@ -335,15 +338,15 @@
                                                      relatedBy:NSLayoutRelationEqual
                                                         toItem:self
                                                      attribute:NSLayoutAttributeWidth
-                                                    multiplier:0.6
+                                                    multiplier:0.45
                                                       constant:0]];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.trackWidthSlider
                                                      attribute:NSLayoutAttributeBottom
                                                      relatedBy:NSLayoutRelationEqual
-                                                        toItem:self.gaugeWidthLabel
+                                                        toItem:self.gaugeWidthSlider
                                                      attribute:NSLayoutAttributeTop
                                                     multiplier:1
-                                                      constant:-10]];
+                                                      constant:-20]];
 }
 
 - (void)setupGaugeWidthSliderConstraints {
@@ -360,7 +363,7 @@
                                                      relatedBy:NSLayoutRelationEqual
                                                         toItem:self
                                                      attribute:NSLayoutAttributeWidth
-                                                    multiplier:0.6
+                                                    multiplier:0.45
                                                       constant:0]];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.gaugeWidthSlider
                                                      attribute:NSLayoutAttributeBottom
@@ -374,48 +377,48 @@
 - (void)setupLabelsConstraints {
     
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.valueLabel
-                                                     attribute:NSLayoutAttributeCenterX
+                                                     attribute:NSLayoutAttributeRight
                                                      relatedBy:NSLayoutRelationEqual
-                                                        toItem:self
-                                                     attribute:NSLayoutAttributeCenterX
+                                                        toItem:self.valueSliderLabel
+                                                     attribute:NSLayoutAttributeLeft
                                                     multiplier:1
-                                                      constant:0]];
+                                                      constant:-5]];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.trackWidthLabel
-                                                     attribute:NSLayoutAttributeCenterX
+                                                     attribute:NSLayoutAttributeRight
                                                      relatedBy:NSLayoutRelationEqual
-                                                        toItem:self
-                                                     attribute:NSLayoutAttributeCenterX
+                                                        toItem:self.trackWidthSliderLabel
+                                                     attribute:NSLayoutAttributeLeft
                                                     multiplier:1
-                                                      constant:0]];
+                                                      constant:-5]];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.gaugeWidthLabel
-                                                     attribute:NSLayoutAttributeCenterX
+                                                     attribute:NSLayoutAttributeRight
                                                      relatedBy:NSLayoutRelationEqual
-                                                        toItem:self
-                                                     attribute:NSLayoutAttributeCenterX
+                                                        toItem:self.gaugeWidthSliderLabel
+                                                     attribute:NSLayoutAttributeLeft
                                                     multiplier:1
-                                                      constant:0]];
+                                                      constant:-5]];
     
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.valueLabel
-                                                     attribute:NSLayoutAttributeBottom
+                                                     attribute:NSLayoutAttributeCenterY
                                                      relatedBy:NSLayoutRelationEqual
                                                         toItem:self.valueSlider
-                                                     attribute:NSLayoutAttributeTop
+                                                     attribute:NSLayoutAttributeCenterY
                                                     multiplier:1
-                                                      constant:-10]];
+                                                      constant:0]];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.trackWidthLabel
-                                                     attribute:NSLayoutAttributeBottom
+                                                     attribute:NSLayoutAttributeCenterY
                                                      relatedBy:NSLayoutRelationEqual
                                                         toItem:self.trackWidthSlider
-                                                     attribute:NSLayoutAttributeTop
+                                                     attribute:NSLayoutAttributeCenterY
                                                     multiplier:1
-                                                      constant:-10]];
+                                                      constant:0]];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.gaugeWidthLabel
-                                                     attribute:NSLayoutAttributeBottom
+                                                     attribute:NSLayoutAttributeCenterY
                                                      relatedBy:NSLayoutRelationEqual
                                                         toItem:self.gaugeWidthSlider
-                                                     attribute:NSLayoutAttributeTop
+                                                     attribute:NSLayoutAttributeCenterY
                                                     multiplier:1
-                                                      constant:-10]];
+                                                      constant:0]];
 }
 
 - (CHCircleGaugeView *)gauge {
@@ -439,7 +442,7 @@
     if (_gaugeStyleLabel == nil) {
         _gaugeStyleLabel = [[UILabel alloc] init];
         _gaugeStyleLabel.translatesAutoresizingMaskIntoConstraints = NO;
-        _gaugeStyleLabel.font = [UIFont systemFontOfSize:15.0];
+        _gaugeStyleLabel.font = [UIFont systemFontOfSize:CHLabelFontSize];
     }
     
     return _gaugeStyleLabel;
@@ -460,7 +463,7 @@
     if (_valueLabel == nil) {
         _valueLabel = [[UILabel alloc] init];
         _valueLabel.translatesAutoresizingMaskIntoConstraints = NO;
-        _valueLabel.font = [UIFont systemFontOfSize:15.0];
+        _valueLabel.font = [UIFont systemFontOfSize:CHLabelFontSize];
     }
     
     return _valueLabel;
@@ -471,7 +474,7 @@
     if (_trackWidthLabel == nil) {
         _trackWidthLabel = [[UILabel alloc] init];
         _trackWidthLabel.translatesAutoresizingMaskIntoConstraints = NO;
-        _trackWidthLabel.font = [UIFont systemFontOfSize:15.0];
+        _trackWidthLabel.font = [UIFont systemFontOfSize:CHLabelFontSize];
     }
     
     return _trackWidthLabel;
@@ -482,7 +485,7 @@
     if (_gaugeWidthLabel == nil) {
         _gaugeWidthLabel = [[UILabel alloc] init];
         _gaugeWidthLabel.translatesAutoresizingMaskIntoConstraints = NO;
-        _gaugeWidthLabel.font = [UIFont systemFontOfSize:15.0];
+        _gaugeWidthLabel.font = [UIFont systemFontOfSize:CHLabelFontSize];
     }
     
     return _gaugeWidthLabel;
@@ -492,7 +495,7 @@
     
     if (_valueSliderLabel == nil) {
         _valueSliderLabel = [[UILabel alloc] init];
-        _valueSliderLabel.font = [UIFont systemFontOfSize:15.0];
+        _valueSliderLabel.font = [UIFont boldSystemFontOfSize:CHSliderValueLabelFontSize];
         _valueSliderLabel.translatesAutoresizingMaskIntoConstraints = NO;
     }
     
@@ -503,7 +506,7 @@
     
     if (_trackWidthSliderLabel == nil) {
         _trackWidthSliderLabel = [[UILabel alloc] init];
-        _trackWidthSliderLabel.font = [UIFont systemFontOfSize:15.0];
+        _trackWidthSliderLabel.font = [UIFont boldSystemFontOfSize:CHSliderValueLabelFontSize];
         _trackWidthSliderLabel.translatesAutoresizingMaskIntoConstraints = NO;
     }
     
@@ -514,7 +517,7 @@
     
     if (_gaugeWidthSliderLabel == nil) {
         _gaugeWidthSliderLabel = [[UILabel alloc] init];
-        _gaugeWidthSliderLabel.font = [UIFont systemFontOfSize:15.0];
+        _gaugeWidthSliderLabel.font = [UIFont boldSystemFontOfSize:CHSliderValueLabelFontSize];
         _gaugeWidthSliderLabel.translatesAutoresizingMaskIntoConstraints = NO;
     }
     
