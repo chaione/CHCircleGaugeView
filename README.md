@@ -64,6 +64,7 @@ The gauge can easily be configured by adjusting public properties:
 * `unitsString`: String that is a suffix on the `value`. This string is meant to be just a few characters long. Defaults to `nil`.
 * `notApplicableString`: The text shown when the state of the gauge is `CHCircleGaugeViewStateNA`. Defaults to "n/a".
 * `noDataString`: The text shown when the state of the gauge is `CHCircleGaugeViewStatePercentSign`. Defaults to "%".
+* `gaugeStyle`: Determines how the gauge is drawn relative to the track. Defaults to `CHCircleGaugeStyleInside`.
 
 ## Contributing
 
