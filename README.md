@@ -5,7 +5,7 @@ A configurable chart that depicts the value of a measurement using a subtle anim
 [![Version](https://cocoapod-badges.herokuapp.com/v/CHCircleGaugeView/badge.png)](http://cocoadocs.org/docsets/CHCircleGaugeView)
 [![Platform](https://cocoapod-badges.herokuapp.com/p/CHCircleGaugeView/badge.png)](http://cocoadocs.org/docsets/CHCircleGaugeView)
 
-<img src="https://github.com/chaione/CHCircleGauge/raw/master/miscellaneous/screenshots/CHCircleGaugeView_ExampleAnimation01.gif">
+<img src="https://github.com/chaione/CHCircleGauge/raw/master/miscellaneous/screenshots/CHCircleGaugeView_ExampleAnimation02.gif">
 
 ## Installation
 
