@@ -9,8 +9,9 @@
 #import "CHView.h"
 #import "CHCircleGaugeView.h"
 
-static CGFloat const CHLabelFontSize = 9.0;
-static CGFloat const CHSliderValueLabelFontSize = 10.0;
+static CGFloat const CHLabelFontSize = 11.0;
+static CGFloat const CHSliderValueLabelFontSize = 12.0;
+static CGFloat const CHLabelWidth = 50.0;
 
 @interface CHView ()
 
@@ -152,7 +153,7 @@ static CGFloat const CHSliderValueLabelFontSize = 10.0;
                                                         toItem:self.gaugeStyleSwitch
                                                      attribute:NSLayoutAttributeLeft
                                                     multiplier:1
-                                                      constant:-5]];
+                                                      constant:-8]];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.gaugeStyleLabel
                                                      attribute:NSLayoutAttributeCenterY
                                                      relatedBy:NSLayoutRelationEqual
@@ -382,21 +383,21 @@ static CGFloat const CHSliderValueLabelFontSize = 10.0;
                                                         toItem:self.valueSliderLabel
                                                      attribute:NSLayoutAttributeLeft
                                                     multiplier:1
-                                                      constant:-5]];
+                                                      constant:-8]];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.trackWidthLabel
                                                      attribute:NSLayoutAttributeRight
                                                      relatedBy:NSLayoutRelationEqual
                                                         toItem:self.trackWidthSliderLabel
                                                      attribute:NSLayoutAttributeLeft
                                                     multiplier:1
-                                                      constant:-5]];
+                                                      constant:-8]];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.gaugeWidthLabel
                                                      attribute:NSLayoutAttributeRight
                                                      relatedBy:NSLayoutRelationEqual
                                                         toItem:self.gaugeWidthSliderLabel
                                                      attribute:NSLayoutAttributeLeft
                                                     multiplier:1
-                                                      constant:-5]];
+                                                      constant:-8]];
     
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.valueLabel
                                                      attribute:NSLayoutAttributeCenterY
@@ -419,6 +420,28 @@ static CGFloat const CHSliderValueLabelFontSize = 10.0;
                                                      attribute:NSLayoutAttributeCenterY
                                                     multiplier:1
                                                       constant:0]];
+    
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.valueLabel
+                                                     attribute:NSLayoutAttributeWidth
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:nil
+                                                     attribute:NSLayoutAttributeNotAnAttribute
+                                                    multiplier:1
+                                                      constant:CHLabelWidth]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.trackWidthLabel
+                                                     attribute:NSLayoutAttributeWidth
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:nil
+                                                     attribute:NSLayoutAttributeNotAnAttribute
+                                                    multiplier:1
+                                                      constant:CHLabelWidth]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.gaugeWidthLabel
+                                                     attribute:NSLayoutAttributeWidth
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:nil
+                                                     attribute:NSLayoutAttributeNotAnAttribute
+                                                    multiplier:1
+                                                      constant:CHLabelWidth]];
 }
 
 - (CHCircleGaugeView *)gauge {
@@ -464,6 +487,8 @@ static CGFloat const CHSliderValueLabelFontSize = 10.0;
         _valueLabel = [[UILabel alloc] init];
         _valueLabel.translatesAutoresizingMaskIntoConstraints = NO;
         _valueLabel.font = [UIFont systemFontOfSize:CHLabelFontSize];
+        _valueLabel.textAlignment = NSTextAlignmentRight;
+        _valueLabel.numberOfLines = 2;
     }
     
     return _valueLabel;
@@ -475,6 +500,8 @@ static CGFloat const CHSliderValueLabelFontSize = 10.0;
         _trackWidthLabel = [[UILabel alloc] init];
         _trackWidthLabel.translatesAutoresizingMaskIntoConstraints = NO;
         _trackWidthLabel.font = [UIFont systemFontOfSize:CHLabelFontSize];
+        _trackWidthLabel.textAlignment = NSTextAlignmentRight;
+        _trackWidthLabel.numberOfLines = 2;
     }
     
     return _trackWidthLabel;
@@ -486,6 +513,8 @@ static CGFloat const CHSliderValueLabelFontSize = 10.0;
         _gaugeWidthLabel = [[UILabel alloc] init];
         _gaugeWidthLabel.translatesAutoresizingMaskIntoConstraints = NO;
         _gaugeWidthLabel.font = [UIFont systemFontOfSize:CHLabelFontSize];
+        _gaugeWidthLabel.textAlignment = NSTextAlignmentRight;
+        _gaugeWidthLabel.numberOfLines = 2;
     }
     
     return _gaugeWidthLabel;
